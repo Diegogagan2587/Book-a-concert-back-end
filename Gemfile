@@ -46,3 +46,5 @@ group :development do
 
 end
 
+
+gem "rspec-rails", "~> 6.0"
