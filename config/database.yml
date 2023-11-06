@@ -79,6 +79,4 @@ test:
 #
 production:
   <<: *default
-  database: book_a_concert_back_end_production
-  username: book_a_concert_back_end
-  password: <%= ENV["BOOK_A_CONCERT_BACK_END_DATABASE_PASSWORD"] %>
+  url: <%= ENV['DATABASE_URL'] %>
