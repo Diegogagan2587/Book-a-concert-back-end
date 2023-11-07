@@ -19,6 +19,12 @@ class ConcertsController < ApplicationController
     end
   end
 
+  def current_user_concerts
+    @current_user = User.find_by(logged: true)
+    @concerts = @current_user.concerts
+    render json: @concerts
+  end
+
   def destroy
     @concert = Concert.find(params[:id])
     @concert.destroy
