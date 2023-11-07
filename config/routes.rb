@@ -1,9 +1,14 @@
 Rails.application.routes.draw do
-  post "/signup", to: "users#create"
-  post "/login", to: "sessions#create"
-  delete "/logout", to: "sessions#destroy"
-  get "/all_users", to: "users#index"
+  get "/users", to: "users#index"
   get "/concerts", to: "concerts#index"
   get "/concerts/:id", to: "concerts#show"
+  get "/reservations", to: "reservations#index"
+
+  post "/signup", to: "users#create"
+  post "/login", to: "sessions#create"
   post "/concerts", to: "concerts#create"
+  post '/reservations', to: 'reservations#create'
+
+  delete "/logout", to: "sessions#destroy"
+  delete "/concerts/:id", to: "concerts#destroy"
 end
