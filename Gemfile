@@ -48,4 +48,5 @@ group :development do
   # gem "spring"
 end
 
+gem 'rack-cors'
 gem 'rspec-rails', '~> 6.0'
