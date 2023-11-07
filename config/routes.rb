@@ -5,4 +5,5 @@ Rails.application.routes.draw do
   get "/all_users", to: "users#index"
   get "/concerts", to: "concerts#index"
   get "/concerts/:id", to: "concerts#show"
+  post "/concerts", to: "concerts#create"
 end
