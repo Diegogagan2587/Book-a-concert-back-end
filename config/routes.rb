@@ -6,4 +6,5 @@ Rails.application.routes.draw do
   get "/concerts", to: "concerts#index"
   get "/concerts/:id", to: "concerts#show"
   post "/concerts", to: "concerts#create"
+  delete "/concerts/:id", to: "concerts#destroy"
 end
