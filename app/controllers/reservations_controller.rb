@@ -13,7 +13,7 @@ class ReservationsController < ApplicationController
     @reservation = Reservation.new(reservation_params)
 
     if @reservation.save
-      render json: @reservation, status: :created
+      render json: { message: 'Reservation created successfully' }
     else
       render json: { errors: @reservation.errors.full_messages }
     end

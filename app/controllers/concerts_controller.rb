@@ -32,7 +32,7 @@ class ConcertsController < ApplicationController
   def destroy
     @concert = Concert.find(params[:id])
     @concert.destroy
-    render json: { message: 'Concert deleted successfully' }
+    render json: { message: 'Concert deleted successfully and all its reservations' }
   end
 
   private
