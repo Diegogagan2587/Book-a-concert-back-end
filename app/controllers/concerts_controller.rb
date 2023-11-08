@@ -13,9 +13,19 @@ class ConcertsController < ApplicationController
     @concert = Concert.new(concert_params)
 
     if @concert.save
-      render json: @concert, status: :created
+      render json: { message: 'Concert created successfully' }
     else
-      render json: { errors: @concert.errors.full_messages }, status: :unprocessable_entity
+      render json: { errors: @concert.errors.full_messages }
+    end
+  end
+
+  def current_user_concerts
+    @current_user = User.find_by(logged: true)
+    if @current_user
+      @concerts = @current_user.concerts
+      render json: @concerts
+    else
+      render json: { message: 'nobody has logged in, do that first to see the concerts' }
     end
   end
 
