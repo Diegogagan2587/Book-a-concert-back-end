@@ -40,11 +40,12 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_06_150551) do
 
   create_table "users", force: :cascade do |t|
     t.string "name"
+    t.boolean "logged", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   add_foreign_key "concerts", "users", column: "organizer_id"
-  add_foreign_key "reservations", "concerts"
+  add_foreign_key "reservations", "concerts", on_delete: :cascade
   add_foreign_key "reservations", "users"
 end
