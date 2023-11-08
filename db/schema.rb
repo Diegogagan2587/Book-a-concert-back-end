@@ -46,6 +46,6 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_06_150551) do
   end
 
   add_foreign_key "concerts", "users", column: "organizer_id"
-  add_foreign_key "reservations", "concerts"
+  add_foreign_key "reservations", "concerts", on_delete: :cascade
   add_foreign_key "reservations", "users"
 end
