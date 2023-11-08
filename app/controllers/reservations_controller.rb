@@ -13,9 +13,19 @@ class ReservationsController < ApplicationController
     @reservation = Reservation.new(reservation_params)
 
     if @reservation.save
-      render json: @reservation, status: :created
+      render json: { message: 'Reservation created successfully' }
     else
-      render json: { errors: @reservation.errors.full_messages }, status: :unprocessable_entity
+      render json: { errors: @reservation.errors.full_messages }
+    end
+  end
+
+  def current_user_reservations
+    @current_user = User.find_by(logged: true)
+    if @current_user
+      @reservations = @current_user.reservations
+      render json: @reservations
+    else
+      render json: { message: 'You are not logged in' }
     end
   end
 
