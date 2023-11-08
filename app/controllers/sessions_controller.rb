@@ -1,19 +1,23 @@
 class SessionsController < ApplicationController
   def create
     user = User.find_by(name: params[:name])
-    if user && user.logged == false
-      User.find_by(name: user.name).update(logged: true)
-      render json: { message: 'User logged in successfully', username: user.name }
-    elsif user && user.logged == true
-      render json: { error: 'User already logged in' }, status: :unprocessable_entity
+
+    if user
+      User.update_all(logged: false) # Log out all users
+      user.update(logged: true) # Log in the current user
+      render json: { message: "#{user.name} logged in successfully" }
     else
-      render json: { error: 'User not found' }, status: :unprocessable_entity
+      render json: { error: 'User not found' }
     end
   end
 
   def destroy
     user = User.find_by(logged: true)
-    user.update(logged: false)
-    render json: { message: 'User logged out successfully' }
+    if user
+      User.update_all(logged: false) # Log out all users
+      render json: { message: 'User logged out successfully' }
+    else
+      render json: { error: 'No user is currently logged in' }
+    end
   end
 end
