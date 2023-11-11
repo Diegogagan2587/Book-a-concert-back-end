@@ -1,21 +1,21 @@
 class ReservationsController < ApplicationController
   def index
     @reservations = Reservation.all
-    render json: @reservations
+    render json: @reservations, status: :ok
   end
 
   def show
     @reservation = Reservation.find(params[:id])
-    render json: @reservation
+    render json: @reservation, status: :ok
   end
 
   def create
     @reservation = Reservation.new(reservation_params)
 
     if @reservation.save
-      render json: { message: 'Reservation created successfully' }
+      render json: { message: 'Reservation created successfully' }, status: :created
     else
-      render json: { errors: @reservation.errors.full_messages }
+      render json: { errors: @reservation.errors.full_messages }, status: :unprocessable_entity
     end
   end
 
@@ -23,9 +23,9 @@ class ReservationsController < ApplicationController
     @current_user = User.find_by(logged: true)
     if @current_user
       @reservations = @current_user.reservations
-      render json: @reservations
+      render json: @reservations, status: :ok
     else
-      render json: { message: 'You are not logged in' }
+      render json: { message: 'You are not logged in' }, status: :unauthorized
     end
   end
 
