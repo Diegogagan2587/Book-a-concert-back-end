@@ -1,17 +1,24 @@
 class ConcertsController < ApplicationController
   def index
     @concerts = Concert.all
-    render json: @concerts
+    concerts_hash = @concerts.as_json
+    concerts_hash.each do |c|
+      organizer_name = User.find(c['organizer_id']).name
+      c['organizer_name'] = organizer_name
+    end
+    render json: concerts_hash
   end
 
   def show
     @concert = Concert.find(params[:id])
-    render json: @concert
+    concert_hash = @concert.as_json
+    organizer_name = User.find(concert_hash['organizer_id']).name
+    concert_hash['organizer_name'] = organizer_name
+    render json: concert_hash
   end
 
   def create
     @concert = Concert.new(concert_params)
-
     if @concert.save
       render json: { message: 'Concert created successfully' }
     else
@@ -23,7 +30,12 @@ class ConcertsController < ApplicationController
     @current_user = User.find_by(logged: true)
     if @current_user
       @concerts = @current_user.concerts
-      render json: @concerts
+      concerts_hash = @concerts.as_json
+      concerts_hash.each do |c|
+        organizer_name = User.find(c['organizer_id']).name
+        c['organizer_name'] = organizer_name
+      end
+      render json: concerts_hash
     else
       render json: { message: 'nobody has logged in, do that first to see the concerts' }
     end
