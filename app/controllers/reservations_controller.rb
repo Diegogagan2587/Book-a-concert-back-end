@@ -1,17 +1,28 @@
 class ReservationsController < ApplicationController
   def index
     @reservations = Reservation.all
-    render json: @reservations, status: :ok
+    reservations_hash = @reservations.as_json
+    reservations_hash.each do |r|
+      user_name = User.find(r['user_id']).name
+      r['user_name'] = user_name
+      concert_title = Concert.find(r['concert_id']).title
+      r['concert_title'] = concert_title
+    end
+    render json: reservations_hash, status: :ok
   end
 
   def show
     @reservation = Reservation.find(params[:id])
-    render json: @reservation, status: :ok
+    reservation_hash = @reservation.as_json
+    user_name = User.find(reservation_hash['user_id']).name
+    reservation_hash['user_name'] = user_name
+    concert_title = Concert.find(reservation_hash['concert_id']).title
+    reservation_hash['concert_title'] = concert_title
+    render json: reservation_hash, status: :ok
   end
 
   def create
     @reservation = Reservation.new(reservation_params)
-
     if @reservation.save
       render json: { message: 'Reservation created successfully' }, status: :created
     else
@@ -23,7 +34,14 @@ class ReservationsController < ApplicationController
     @current_user = User.find_by(logged: true)
     if @current_user
       @reservations = @current_user.reservations
-      render json: @reservations, status: :ok
+      reservations_hash = @reservations.as_json
+      reservations_hash.each do |r|
+        user_name = User.find(r['user_id']).name
+        r['user_name'] = user_name
+        concert_title = Concert.find(r['concert_id']).title
+        r['concert_title'] = concert_title
+      end
+      render json: reservations_hash, status: :ok
     else
       render json: { message: 'You are not logged in' }, status: :unauthorized
     end
