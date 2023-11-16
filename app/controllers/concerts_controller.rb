@@ -55,6 +55,11 @@ class ConcertsController < ApplicationController
     end
   end
 
+  def delete_all_concerts
+    Concert.delete_all
+    render json: { message: 'All concerts deleted successfully' }, status: :ok
+  end
+
   private
 
   def concert_params

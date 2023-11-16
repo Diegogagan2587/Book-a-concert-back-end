@@ -14,6 +14,11 @@ class UsersController < ApplicationController
     render json: users, status: :ok
   end
 
+  def delete_all_users
+    User.delete_all
+    render json: { message: 'All users deleted successfully' }, status: :ok
+  end
+
   private
 
   def user_params

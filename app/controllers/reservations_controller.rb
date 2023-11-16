@@ -47,6 +47,11 @@ class ReservationsController < ApplicationController
     end
   end
 
+  def delete_all_reservations
+    Reservation.delete_all
+    render json: { message: 'All reservations deleted successfully' }, status: :ok
+  end
+
   private
 
   def reservation_params
