@@ -181,7 +181,7 @@ Contributions are welcome! If you find any bugs or want to enhance the project w
 4. Push your changes to your forked repository.
 5. Submit a pull request describing your changes.
 
-Feel free to check the [issues page](../../issues/).
+Feel free to check the [issues page](https://github.com/Diegogagan2587/Book-a-concert-back-end/issues).
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
