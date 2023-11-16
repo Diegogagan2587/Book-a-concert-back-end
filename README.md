@@ -146,7 +146,7 @@ To run tests, run the following command:
 
 - GitHub: [@danifromecuador](https://github.com/danifromecuador)
 - Twitter: [@danifromecuador](https://twitter.com/danimorilloc)
-- LinkedIn: [danielfromecuador](https://www.linkedin.com/in/danimorilloc)
+- LinkedIn: [danielfromecuador](https://www.linkedin.com/in/danifromec)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
