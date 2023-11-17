@@ -12,6 +12,7 @@
 # Table of Contents
 
 - [Book a Concert App](#--book-a-concert-)
+- [Kanban Board](#kanban-board)
 - [Built With ](#-built-with-)
    - [Tech Stack ](#tech-stack-)
     - [Key Features ](#key-features-)
@@ -35,6 +36,16 @@
 # Book a Concert App <a name="--book-a-concert-"></a>
 
 **Book a Concert App** Final Capstone Project, based on an app to book an appointment to a concert. This App will use Rails for the backend API and React for the frontend
+
+### Kanban Board <a id="kanban-board">
+- Take a look to the [Project Kanban Board](https://github.com/users/Diegogagan2587/projects/4/views/2)
+- Final number of team members: 3
+- Kanban Initial state below:
+
+<div align="center">
+    <img src="kanban.png" alt="kanban" width="auto"  height="auto" />
+</div>
+
 
 ## Built With <a name="built-with"></a>
 - Ruby on Rails
