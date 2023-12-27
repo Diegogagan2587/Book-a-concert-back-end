@@ -50,3 +50,5 @@ group :development do
 end
 
 gem 'rack-cors'
+
+gem "devise", "~> 4.9"
