@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :users
   get "/users", to: "users#index"
   get "/current_user", to: "application#current_user"
   get "/current_user/concerts", to: "concerts#current_user_concerts"
