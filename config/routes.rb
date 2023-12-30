@@ -17,11 +17,7 @@ Rails.application.routes.draw do
   get "/reservations", to: "reservations#index"
   get "/reservations/:id", to: "reservations#show"
 
-  post "/signup", to: "users#create"
-  post "/login", to: "sessions#create"
   post "/concerts", to: "concerts#create"
   post '/reservations', to: 'reservations#create'
-
-  delete "/logout", to: "sessions#destroy"
   delete "/concerts/:id", to: "concerts#destroy"
 end
